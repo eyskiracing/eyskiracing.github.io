@@ -7,13 +7,29 @@
   <meta name="description" content="Everett Young — founder-operator focused on AI-enabled product, partnerships, strategic operations, and startup growth." />
   <style>
     :root {
+      color-scheme: light;
       --bg: #f7f5f0;
       --text: #202124;
       --muted: #5f6368;
       --card: #ffffff;
+      --subtle-card: #fffdf9;
       --accent: #1d4ed8;
       --accent-dark: #123a8f;
       --border: #e5e0d8;
+      --shadow: rgba(32, 33, 36, 0.06);
+    }
+
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #111827;
+      --text: #f9fafb;
+      --muted: #cbd5e1;
+      --card: #1f2937;
+      --subtle-card: #172033;
+      --accent: #93c5fd;
+      --accent-dark: #bfdbfe;
+      --border: #374151;
+      --shadow: rgba(0, 0, 0, 0.28);
     }
 
     * { box-sizing: border-box; }
@@ -59,7 +75,8 @@
       font-size: 15px;
     }
 
-    .language-toggle {
+    .language-toggle,
+    .theme-toggle {
       display: inline-flex;
       gap: 4px;
       padding: 4px;
@@ -68,7 +85,8 @@
       background: var(--card);
     }
 
-    .lang-button {
+    .lang-button,
+    .theme-button {
       border: none;
       background: transparent;
       color: var(--muted);
@@ -76,11 +94,25 @@
       border-radius: 999px;
       font-weight: 700;
       cursor: pointer;
+      font: inherit;
     }
 
-    .lang-button.active {
+    .lang-button.active,
+    .theme-button.active {
       background: var(--accent);
-      color: white;
+      color: var(--bg);
+    }
+
+    .theme-button {
+      min-width: 38px;
+    }
+
+    html[data-theme="dark"] .button.primary {
+      color: #111827;
+    }
+
+    html[data-theme="dark"] .button.secondary {
+      color: var(--accent);
     }
 
     .hero {
@@ -95,7 +127,7 @@
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 24px;
-      box-shadow: 0 20px 50px rgba(32, 33, 36, 0.06);
+      box-shadow: 0 20px 50px var(--shadow);
     }
 
     .hero-card { padding: 48px; }
@@ -120,7 +152,7 @@
       font-size: clamp(20px, 2.4vw, 28px);
       line-height: 1.25;
       margin: 0 0 28px;
-      color: #333;
+      color: var(--text);
       max-width: 760px;
     }
 
@@ -150,7 +182,7 @@
 
     .button.primary { background: var(--accent); color: white; }
     .button.primary:hover { background: var(--accent-dark); text-decoration: none; }
-    .button.secondary { background: white; color: var(--accent); }
+    .button.secondary { background: var(--card); color: var(--accent); }
     .button.secondary:hover { text-decoration: none; border-color: var(--accent-dark); color: var(--accent-dark); }
 
     .fr-only { display: none; }
@@ -198,7 +230,7 @@
       border: 1px solid var(--border);
       border-radius: 18px;
       padding: 22px;
-      background: #fffdf9;
+      background: var(--subtle-card);
     }
 
     .mini-card h3 { margin: 0 0 8px; font-size: 18px; }
@@ -220,7 +252,7 @@
       margin-bottom: 8px;
     }
 
-    .role p { margin: 0; color: #3f444a; }
+    .role p { margin: 0; color: var(--text); }
 
     .pill-row {
       display: flex;
@@ -231,11 +263,11 @@
 
     .pill {
       border: 1px solid var(--border);
-      background: #fffdf9;
+      background: var(--subtle-card);
       border-radius: 999px;
       padding: 8px 12px;
       font-size: 14px;
-      color: #3f444a;
+      color: var(--text);
       font-weight: 650;
     }
 
@@ -269,6 +301,10 @@
         <div class="language-toggle" aria-label="Language selector">
           <button class="lang-button active" type="button" data-lang="en">EN</button>
           <button class="lang-button" type="button" data-lang="fr">FR</button>
+        </div>
+        <div class="theme-toggle" aria-label="Theme selector">
+          <button class="theme-button active" type="button" data-theme-value="light" aria-label="Use light mode">☀️</button>
+          <button class="theme-button" type="button" data-theme-value="dark" aria-label="Use dark mode">🌙</button>
         </div>
       </div>
     </header>
@@ -477,7 +513,7 @@
         languagesLabel: "Langues",
         languagesValue: "Anglais natif · Français courant · Espagnol conversationnel",
         lookingLabel: "Ce que je recherche",
-        lookingValue: "Des équipes ambitieuses, à mission, qui valorisent l’ownership, la collaboration et les résultats.",
+        lookingValue: "Des équipes ambitieuses, à mission, qui valorisent une culture d’ownership, la collaboration et les résultats.",
         aboutTitle: "Profil",
         aboutP1: "Je suis un opérateur startup avec une forte capacité à faire le lien entre les équipes techniques, le produit, les partenariats, le go-to-market, les opérations, l’accompagnement des fondateurs, le corporate development et les sujets de gouvernance. J’ai contribué à commercialiser des produits, construire des stratégies de partenariat, créer des supports investisseurs et board, accompagner des fondateurs et traduire des capacités techniques en récits commerciaux clairs.",
         aboutP2: "Mon parcours inclut aussi l’entraînement de ski alpin de haut niveau, où l’objectif est d’aider des personnes très talentueuses à performer à leur meilleur niveau sans exploser. J’applique cette même logique aux startups : aider des équipes brillantes à trouver la bonne ligne entre vitesse, pression, exécution et durabilité.",
@@ -535,8 +571,22 @@
       }
     }
 
+    function setTheme(theme) {
+      const selected = theme === "dark" ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", selected);
+      localStorage.setItem("preferredTheme", selected);
+
+      document.querySelectorAll(".theme-button").forEach((button) => {
+        button.classList.toggle("active", button.dataset.themeValue === selected);
+      });
+    }
+
     document.querySelectorAll(".lang-button").forEach((button) => {
       button.addEventListener("click", () => setLanguage(button.dataset.lang));
+    });
+
+    document.querySelectorAll(".theme-button").forEach((button) => {
+      button.addEventListener("click", () => setTheme(button.dataset.themeValue));
     });
 
     const params = new URLSearchParams(window.location.search);
@@ -545,6 +595,11 @@
     const browserLanguage = navigator.language && navigator.language.toLowerCase().startsWith("fr") ? "fr" : "en";
     const initialLanguage = translations[urlLanguage] ? urlLanguage : savedLanguage || browserLanguage;
 
+    const savedTheme = localStorage.getItem("preferredTheme");
+    const systemPrefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initialTheme = savedTheme || (systemPrefersDark ? "dark" : "light");
+
+    setTheme(initialTheme);
     setLanguage(initialLanguage, false);
   </script>
 </body>
