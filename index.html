@@ -153,6 +153,10 @@
     .button.secondary { background: white; color: var(--accent); }
     .button.secondary:hover { text-decoration: none; border-color: var(--accent-dark); color: var(--accent-dark); }
 
+    .fr-only { display: none; }
+    html[lang="fr"] .en-only { display: none; }
+    html[lang="fr"] .fr-only { display: inline-flex; }
+
     .side-card {
       padding: 32px;
       display: flex;
@@ -282,7 +286,9 @@
           </p>
           <div class="button-row">
             <a class="button primary" href="https://www.linkedin.com/in/everettyoung/" target="_blank" rel="noopener" data-i18n="linkedinButton">Contact me on LinkedIn</a>
-            <a class="button secondary" href="Everett_Young_CV_Resume.pdf" data-i18n="cvButton">Download CV</a>
+            <a class="button secondary en-only" href="Everett_Young_CV_Resume_EN.pdf" data-i18n="cvButton">Download CV</a>
+            <a class="button secondary fr-only" href="Everett_Young_CV_Resume_FR.pdf" data-i18n="cvButtonFrench">CV en français</a>
+            <a class="button secondary fr-only" href="Everett_Young_CV_Resume_EN.pdf" data-i18n="cvButtonEnglish">CV en anglais</a>
           </div>
         </div>
 
@@ -410,6 +416,8 @@
         summary: "Founder-operator, board director, and startup mentor with experience across B2B SaaS, cyber governance, compliance technology, sport tech, consumer tech, edtech, and hardware. I work best in cross-functional environments where people own outcomes, not just tasks.",
         linkedinButton: "Contact me on LinkedIn",
         cvButton: "Download CV",
+        cvButtonFrench: "French CV",
+        cvButtonEnglish: "English CV",
         locationLabel: "Location",
         locationValue: "Var, France / à distance",
         authorizationLabel: "Work Authorization",
@@ -460,6 +468,8 @@
         summary: "Fondateur-opérateur, administrateur et mentor de startups, avec une expérience en SaaS B2B, cyber gouvernance, conformité, sport tech, technologies grand public, edtech et hardware. Je travaille particulièrement bien avec des équipes transverses où chacun est attendu sur des résultats, pas seulement sur l’exécution de tâches.",
         linkedinButton: "Me contacter sur LinkedIn",
         cvButton: "Télécharger le CV",
+        cvButtonFrench: "CV en français",
+        cvButtonEnglish: "CV en anglais",
         locationLabel: "Localisation",
         locationValue: "Var, France / à distance",
         authorizationLabel: "Autorisation de travail",
