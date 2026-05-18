@@ -239,6 +239,73 @@
     .mini-card h3 { margin: 0 0 8px; font-size: 18px; }
     .mini-card p { margin: 0; color: var(--muted); }
 
+    .line-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .line-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(29, 78, 216, 0.10), transparent 42%);
+      pointer-events: none;
+    }
+
+    html[data-theme="dark"] .line-card::before {
+      background: linear-gradient(135deg, rgba(147, 197, 253, 0.14), transparent 42%);
+    }
+
+    .line-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .line-eyebrow {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .line-headline {
+      max-width: 780px;
+      margin-bottom: 18px;
+    }
+
+    .line-copy {
+      max-width: 820px;
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 26px;
+    }
+
+    .line-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .line-mini {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+      background: var(--subtle-card);
+    }
+
+    .line-mini h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .line-mini p {
+      margin: 0;
+      color: var(--muted);
+    }
+
     .timeline { display: grid; gap: 22px; }
 
     .role {
@@ -286,7 +353,7 @@
       header { align-items: flex-start; flex-direction: column; padding-bottom: 32px; }
       .nav-wrap { align-items: flex-start; flex-direction: column; gap: 14px; }
       .hero-card, .section-card, .side-card { padding: 28px; }
-      .grid { grid-template-columns: 1fr; }
+      .grid, .line-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -365,6 +432,32 @@
         </div>
       </section>
 
+      <section id="line">
+        <div class="section-card line-card">
+          <div class="line-content">
+            <div class="line-eyebrow" data-i18n="lineEyebrow">The Edge</div>
+            <h2 class="line-headline" data-i18n="lineTitle">Peak performance lives on the edge.</h2>
+            <p class="line-copy" data-i18n="lineText">
+              In elite ski racing, the edge is not what separates performance from failure. It is where performance happens. Winning requires developing and managing speed, making split-second decisions to stay on the edge, and recovering quickly when the edge slips. Startups work the same way: move fast, make quick adjustments, and keep the team aligned before momentum turns into chaos.
+            </p>
+            <div class="line-grid">
+              <div class="line-mini">
+                <h3 data-i18n="lineSpeedTitle">Speed</h3>
+                <p data-i18n="lineSpeedText">Develop and manage speed without losing the edge.</p>
+              </div>
+              <div class="line-mini">
+                <h3 data-i18n="lineControlTitle">Control</h3>
+                <p data-i18n="lineControlText">Create enough structure to let smart teams move fast under pressure.</p>
+              </div>
+              <div class="line-mini">
+                <h3 data-i18n="linePerformanceTitle">Performance</h3>
+                <p data-i18n="linePerformanceText">Turn pressure into outcomes, not motion.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="focus">
         <div class="section-card">
           <h2 data-i18n="focusTitle">Where I can help</h2>
@@ -438,7 +531,7 @@
     </main>
 
     <footer data-i18n="footer">
-      © 2026 Everett YOUNG. Built with GitHub Pages.
+      © 2026 Everett YOUNG. Built with AI, published with GitHub Pages.
     </footer>
   </div>
 
@@ -468,6 +561,15 @@
         aboutTitle: "About",
         aboutP1: "I am a commercially technical startup operator who is comfortable working across product, partnerships, GTM, operations, founder support, corporate development, and board-level strategy. I have led product commercialization, built partnership motions, created investor and diligence materials, mentored founders, and helped translate technical capabilities into clear commercial stories.",
         aboutP2: "My background also includes elite ski racing coaching, where the work is about helping talented people perform at their peak without blowing up. I bring that same lens to startups: help smart teams find the line between speed, pressure, execution, and sustainability.",
+        lineEyebrow: "The Edge",
+        lineTitle: "Peak performance lives on the edge.",
+        lineText: "In elite ski racing, the edge is not what separates performance from failure. It is where performance happens. Winning requires developing and managing speed, making split-second decisions to stay on the edge, and recovering quickly when the edge slips. Startups work the same way: move fast, make quick adjustments, and keep the team aligned before momentum turns into chaos.",
+        lineSpeedTitle: "Speed",
+        lineSpeedText: "Develop and manage speed without losing the edge.",
+        lineControlTitle: "Control",
+        lineControlText: "Create enough structure to let smart teams move fast under pressure.",
+        linePerformanceTitle: "Performance",
+        linePerformanceText: "Fail small and fast, pivot quickly, and turn pressure into outcomes.",
         focusTitle: "Where I can help",
         productTitle: "Product & AI Workflows",
         productText: "Product discovery, API-enabled workflows, AI-assisted research, prompt structuring, product requirements, and technical-to-commercial translation.",
@@ -494,7 +596,7 @@
         contactTitle: "Contact",
         contactText: "I am open to remote or hybrid roles across France, the EU, UK, and U.S. time-zone overlap where appropriate, especially with teams working on mission-driven products, startup ecosystems, climate, sport technology, AI-enabled workflows, and practical governance infrastructure.",
         linkedinButton2: "Contact me on LinkedIn",
-        footer: "© 2026 Everett YOUNG. Built with GitHub Pages."
+        footer: "© 2026 Everett YOUNG. Built with AI, published with GitHub Pages."
       },
       fr: {
         navAbout: "Profil",
@@ -520,6 +622,15 @@
         aboutTitle: "Profil",
         aboutP1: "Je suis un opérateur startup avec une forte capacité à faire le lien entre les équipes techniques, le produit, les partenariats, le go-to-market, les opérations, l’accompagnement des fondateurs, le corporate development et les sujets de gouvernance. J’ai contribué à commercialiser des produits, construire des stratégies de partenariat, créer des supports investisseurs et board, accompagner des fondateurs et traduire des capacités techniques en récits commerciaux clairs.",
         aboutP2: "Mon parcours inclut aussi l’entraînement de ski alpin de haut niveau, où l’objectif est d’aider des personnes très talentueuses à performer à leur meilleur niveau sans exploser. J’applique cette même logique aux startups : aider des équipes brillantes à trouver la bonne ligne entre vitesse, pression, exécution et durabilité.",
+        lineEyebrow: "À la limite",
+        lineTitle: "La performance maximale se joue à la limite.",
+        lineText: "En ski alpin de haut niveau, la performance ne se trouve pas loin du risque. Elle se joue à la limite : développer et maîtriser la vitesse, prendre des décisions en une fraction de seconde et récupérer vite quand la carre décroche. Les startups demandent la même discipline : avancer vite, ajuster rapidement et garder l’équipe alignée avant que l’élan ne devienne du chaos.",
+        lineSpeedTitle: "Vitesse",
+        lineSpeedText: "Développer la vitesse sans perdre la maîtrise.",
+        lineControlTitle: "Maîtrise",
+        lineControlText: "Créer assez de structure pour permettre à des équipes fortes d’avancer vite sous pression.",
+        linePerformanceTitle: "Performance",
+        linePerformanceText: "Tester à petite échelle, apprendre vite, pivoter rapidement et transformer la pression en résultats.",
         focusTitle: "Domaines d’intervention",
         productTitle: "Produit & workflows IA",
         productText: "Découverte produit, workflows API-first, recherche assistée par IA, structuration de prompts, exigences produit et traduction entre enjeux techniques et commerciaux.",
@@ -546,7 +657,7 @@
         contactTitle: "Contact",
         contactText: "Je suis ouvert à des rôles en télétravail ou hybrides en France, dans l’UE, au Royaume-Uni et avec un recouvrement horaire approprié avec les États-Unis, en particulier auprès d’équipes travaillant sur des produits à mission, l’écosystème startup, le climat, la sport tech, les workflows IA et l’infrastructure de gouvernance.",
         linkedinButton2: "Me contacter sur LinkedIn",
-        footer: "© 2026 Everett YOUNG. Créé avec GitHub Pages."
+        footer: "© 2026 Everett YOUNG. Créé avec l’IA, publié avec GitHub Pages."
       }
     };
 
