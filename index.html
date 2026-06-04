@@ -347,6 +347,36 @@
 
     .role p { margin: 0; color: var(--text); }
 
+    .about-layout {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+    }
+
+    .about-image {
+      flex-shrink: 0;
+    }
+
+    .profile-photo {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .about-text h2 { margin-top: 0; }
+    .about-text p:last-child { margin-bottom: 0; }
+
+    @media (max-width: 680px) {
+      .about-layout {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    }
+
     .pill-row {
       display: flex;
       gap: 10px;
@@ -446,13 +476,20 @@
 
       <section id="about">
         <div class="section-card">
-          <h2 data-i18n="aboutTitle">About</h2>
-          <p data-i18n="aboutP1">
-            I am a commercially technical startup operator who is comfortable working across product, partnerships, GTM, operations, founder support, corporate development, and board-level strategy. I have led product commercialization, built partnership motions, created investor and diligence materials, mentored founders, and helped translate technical capabilities into clear commercial stories.
-          </p>
-          <p data-i18n="aboutP2">
-            My background also includes elite ski racing coaching, where the work is about helping talented people perform at their peak without blowing up. I bring that same lens to startups: help smart teams find the line between speed, pressure, execution, and sustainability.
-          </p>
+          <div class="about-layout">
+            <div class="about-image">
+              <img src="profile.png" alt="Everett YOUNG" class="profile-photo" width="220" height="220" />
+            </div>
+            <div class="about-text">
+              <h2 data-i18n="aboutTitle">About</h2>
+              <p data-i18n="aboutP1">
+                I am a commercially technical startup operator who is comfortable working across product, partnerships, GTM, operations, founder support, corporate development, and board-level strategy. I have led product commercialization, built partnership motions, created investor and diligence materials, mentored founders, and helped translate technical capabilities into clear commercial stories.
+              </p>
+              <p data-i18n="aboutP2">
+                My background also includes elite ski racing coaching, where the work is about helping talented people perform at their peak without blowing up. I bring that same lens to startups: help smart teams find the line between speed, pressure, execution, and sustainability.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
