@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VH7TMYV0ZG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-VH7TMYV0ZG');
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Everett Young | Founder-Operator, TPG Consultant, Partnerships, GTM &amp; Strategic Operations</title>
@@ -1116,6 +1125,9 @@
         const url = new URL(window.location);
         url.searchParams.set("lang", selected);
         window.history.replaceState({}, "", url);
+        if (typeof gtag === "function") {
+          gtag("event", "language_switch", { language: selected });
+        }
       }
     }
 
